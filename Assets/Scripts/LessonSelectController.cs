@@ -8,9 +8,14 @@ public class LessonSelectController : MonoBehaviour
     [SerializeField]
     private LessonSelectCardsController cardsController;
 
+    [SerializeField]
+    private UnityEngine.UI.Button PlayButton = null;
+
+
     public void HandleAddButton()
     {
-        cardsController.AnimateAddCard(); 
+        cardsController.AnimateAddCard();
+        PlayButton.gameObject.SetActive(true);
     }
 
     public void HandleSubtractButton()
