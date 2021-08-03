@@ -27,4 +27,9 @@ public class LessonSelectController : MonoBehaviour
     {
         cardsController.AnimateDivideCard();
     }
+
+    public void HandlePlayButton()
+    {
+        Debug.Log("Play!");
+    }
 }
