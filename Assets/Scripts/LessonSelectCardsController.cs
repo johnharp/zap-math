@@ -13,12 +13,11 @@ public class LessonSelectCardsController : MonoBehaviour
 
     public void AnimateAddCard()
     {
-        Debug.Log("Moving the Add card");
         animator.Play("AddCardInAnimation");
     }
 
     public void AnimateSubtractCard()
     {
-        Debug.Log("Moving the Substract card");
+        animator.Play("SubtractCardInAnimation");
     }
 }
