@@ -20,11 +20,11 @@ public class LessonSelectController : MonoBehaviour
 
     public void HandleMultiplyButton()
     {
-
+        cardsController.AnimateMultiplyCard();
     }
 
     public void HandleDivideButton()
     {
-
+        cardsController.AnimateDivideCard();
     }
 }

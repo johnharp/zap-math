@@ -20,4 +20,14 @@ public class LessonSelectCardsController : MonoBehaviour
     {
         animator.Play("SubtractCardInAnimation");
     }
+
+    public void AnimateMultiplyCard()
+    {
+        animator.Play("MultiplyCardInAnimation");
+    }
+
+    public void AnimateDivideCard()
+    {
+        animator.Play("DivideCardInAnimation");
+    }
 }
