@@ -47,7 +47,9 @@ public class CardController : MonoBehaviour
     public void ShowProblem(int n1, int n2, string op)
     {
         string line1 = n1.ToString();
-        string line2 = op + n2.ToString();
+        string line2 = n2.ToString();
+        if (line2.Length == 1) line2 = " " + line2;
+        line2 = op + line2;
 
         Text0.text = "";
         Text1.text = line1;

@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf04a6ab557a40a8a31e067a0fd730b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextScene: SelectScene
+  NextScene: LessonSelectScene
   SecondsToAutoLoadNextScene: 3
 --- !u!4 &1320292258
 Transform:

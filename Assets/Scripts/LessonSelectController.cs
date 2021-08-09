@@ -11,11 +11,21 @@ public class LessonSelectController : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Button PlayButton = null;
 
+    [SerializeField]
+    private GameObject CardPrefab = null;
 
     public void HandleAddButton()
     {
         cardsController.AnimateAddCard();
         PlayButton.gameObject.SetActive(true);
+
+        Vector3 location = new Vector3(-15, 0, 0);
+        GameObject card = Instantiate(
+            CardPrefab,
+            location,
+            CardPrefab.transform.rotation);
+
+        CardController script = card.GetComponent<CardController>();
     }
 
     public void HandleSubtractButton()

@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsController: {fileID: 1371288213}
   PlayButton: {fileID: 1901998249}
+  CardPrefab: {fileID: 5232638790241292323, guid: f7bb6bdc5b14b4846af7ce8f2b94b98d, type: 3}
 --- !u!4 &208779045
 Transform:
   m_ObjectHideFlags: 0
