@@ -24,37 +24,45 @@ public class LessonSelectController : MonoBehaviour
 
     public void HandleAddButton()
     {
+        CanvasAnimator.Play("NumbersIn");
         //cardsController.AnimateAddCard();
 
-        CanvasAnimator.Play("NumbersIn");
-        PlayButton.gameObject.SetActive(true);
+        //PlayButton.gameObject.SetActive(true);
 
-        Vector3 location = new Vector3(-15, 0, 0);
-        GameObject card = Instantiate(
-            CardPrefab,
-            location,
-            CardPrefab.transform.rotation);
+        //Vector3 location = new Vector3(-15, 0, 0);
+        //GameObject card = Instantiate(
+        //    CardPrefab,
+        //    location,
+        //    CardPrefab.transform.rotation);
 
-        CardController script = card.GetComponent<CardController>();
+        //CardController script = card.GetComponent<CardController>();
     }
 
     public void HandleSubtractButton()
     {
-        cardsController.AnimateSubtractCard();
+        CanvasAnimator.Play("NumbersIn");
+        //cardsController.AnimateSubtractCard();
     }
 
     public void HandleMultiplyButton()
     {
-        cardsController.AnimateMultiplyCard();
+        CanvasAnimator.Play("NumbersIn");
+        //cardsController.AnimateMultiplyCard();
     }
 
     public void HandleDivideButton()
     {
-        cardsController.AnimateDivideCard();
+        CanvasAnimator.Play("NumbersIn");
+        //cardsController.AnimateDivideCard();
     }
 
     public void HandlePlayButton()
     {
         Debug.Log("Play!");
+    }
+
+    public void HandleNumberButton(int num)
+    {
+        Debug.Log("pressed: " + num);
     }
 }
