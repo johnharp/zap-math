@@ -14,9 +14,19 @@ public class LessonSelectController : MonoBehaviour
     [SerializeField]
     private GameObject CardPrefab = null;
 
+    [SerializeField]
+    private Animator CanvasAnimator = null;
+
+    public void HandleBackButton()
+    {
+        CanvasAnimator.Play("NumbersOutOperationsIn");
+    }
+
     public void HandleAddButton()
     {
-        cardsController.AnimateAddCard();
+        //cardsController.AnimateAddCard();
+
+        CanvasAnimator.Play("NumbersIn");
         PlayButton.gameObject.SetActive(true);
 
         Vector3 location = new Vector3(-15, 0, 0);
