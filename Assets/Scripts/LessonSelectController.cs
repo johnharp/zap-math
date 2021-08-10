@@ -5,8 +5,8 @@ using UnityEngine;
 public class LessonSelectController : MonoBehaviour
 {
 
-    [SerializeField]
-    private LessonSelectCardsController cardsController;
+    //[SerializeField]
+    //private LessonSelectCardsController cardsController;
 
     [SerializeField]
     private UnityEngine.UI.Button PlayButton = null;
@@ -17,14 +17,32 @@ public class LessonSelectController : MonoBehaviour
     [SerializeField]
     private Animator CanvasAnimator = null;
 
+    [SerializeField]
+    private GameObject Card1 = null;
+
+    [SerializeField]
+    private CardController Card1Controller = null;
+
+    [SerializeField]
+    private Animator CardAnimator = null;
+
+    private int? SelectedNumber = null;
+    private string SelectedOperation = "";
+
     public void HandleBackButton()
     {
         CanvasAnimator.Play("NumbersOutOperationsIn");
+        CardAnimator.Play("CardOut");
     }
 
     public void HandleAddButton()
     {
+        SelectedOperation = CardController.ADD_SYMBOL;
         CanvasAnimator.Play("NumbersIn");
+
+        Card1Controller.ShowAdd();
+        CardAnimator.Play("CardIn");
+
         //cardsController.AnimateAddCard();
 
         //PlayButton.gameObject.SetActive(true);
@@ -40,19 +58,31 @@ public class LessonSelectController : MonoBehaviour
 
     public void HandleSubtractButton()
     {
+        SelectedOperation = CardController.SUBTRACT_SYMBOL;
         CanvasAnimator.Play("NumbersIn");
+
+        Card1Controller.ShowSubtract();
+        CardAnimator.Play("CardIn");
         //cardsController.AnimateSubtractCard();
     }
 
     public void HandleMultiplyButton()
     {
+        SelectedOperation = CardController.MULTIPLY_SYMBOL;
         CanvasAnimator.Play("NumbersIn");
+
+        Card1Controller.ShowMultiply();
+        CardAnimator.Play("CardIn");
         //cardsController.AnimateMultiplyCard();
     }
 
     public void HandleDivideButton()
     {
+        SelectedOperation = CardController.DIVIDE_SYMBOL;
         CanvasAnimator.Play("NumbersIn");
+
+        Card1Controller.ShowDivide();
+        CardAnimator.Play("CardIn");
         //cardsController.AnimateDivideCard();
     }
 
@@ -63,6 +93,8 @@ public class LessonSelectController : MonoBehaviour
 
     public void HandleNumberButton(int num)
     {
+        Card1Controller.ShowProblem(null, num, SelectedOperation);
+        CardAnimator.Play("CardIn");
         Debug.Log("pressed: " + num);
     }
 }

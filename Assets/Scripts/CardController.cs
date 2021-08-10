@@ -21,7 +21,6 @@ public class CardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShowProblem(6, 5, MULTIPLY_SYMBOL);
     }
 
     public void ShowAdd()
@@ -44,10 +43,10 @@ public class CardController : MonoBehaviour
         ShowCategory(DIVIDE_SYMBOL);
     }
 
-    public void ShowProblem(int n1, int n2, string op)
+    public void ShowProblem(int? n1, int? n2, string op)
     {
-        string line1 = n1.ToString();
-        string line2 = n2.ToString();
+        string line1 = n1.HasValue ? n1.ToString() : "?";
+        string line2 = n2.HasValue ? n2.ToString() : "?";
         if (line2.Length == 1) line2 = " " + line2;
         line2 = op + line2;
 
