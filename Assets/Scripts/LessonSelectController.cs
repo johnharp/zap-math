@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LessonSelectController : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class LessonSelectController : MonoBehaviour
 
     public void HandleBackButton()
     {
+        PlayButton.gameObject.SetActive(false);
+
         CanvasAnimator.Play("NumbersOutOperationsIn");
         CardAnimator.Play("CardOut");
     }
@@ -88,6 +91,8 @@ public class LessonSelectController : MonoBehaviour
 
     public void HandlePlayButton()
     {
+        SceneManager.LoadScene("LessonScene");
+
         Debug.Log("Play!");
     }
 
@@ -95,6 +100,7 @@ public class LessonSelectController : MonoBehaviour
     {
         Card1Controller.ShowProblem(null, num, SelectedOperation);
         CardAnimator.Play("CardIn");
+        PlayButton.gameObject.SetActive(true);
         Debug.Log("pressed: " + num);
     }
 }
