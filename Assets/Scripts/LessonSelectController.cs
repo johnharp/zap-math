@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class LessonSelectController : MonoBehaviour
 {
 
-    //[SerializeField]
-    //private LessonSelectCardsController cardsController;
-
     [SerializeField]
     private UnityEngine.UI.Button PlayButton = null;
 
