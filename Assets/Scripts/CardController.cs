@@ -53,6 +53,12 @@ public class CardController : MonoBehaviour
         Text2.text = line2;
     }
 
+    public void ShowProblem(QuestionAnswer qa)
+    {
+        ShowProblem(qa.Num1, qa.Num2,
+            qa.Operation ?? MainController.ADD_SYMBOL);
+    }
+
     private void ShowCategory(char c)
     {
         Text1.text = "";

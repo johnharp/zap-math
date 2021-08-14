@@ -78,17 +78,27 @@ public class LessonSelectController : MonoBehaviour
     public void HandlePlayButton()
     {
         SceneManager.LoadScene("LessonScene");
-
-        Debug.Log("Play!");
     }
 
     public void HandleNumberButton(int num)
     {
         _MainController.SelectedNumber = num;
-        Card1Controller.ShowProblem(null, num, _MainController.SelectedOperation);
+        int? n1 = null;
+        int? n2 = null;
+
+        if (_MainController.SelectedOperation == MainController.DIVIDE_SYMBOL ||
+            _MainController.SelectedOperation == MainController.SUBTRACT_SYMBOL)
+        {
+            n2 = num;
+        }
+        else
+        {
+            n1 = num;
+        }
+
+        Card1Controller.ShowProblem(n1, n2, _MainController.SelectedOperation);
 
         CardAnimator.Play("CardIn");
         PlayButton.gameObject.SetActive(true);
-        Debug.Log("pressed: " + num);
     }
 }
