@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class CardController : MonoBehaviour
 {
-    public const string ADD_SYMBOL = "+";
-    public const string SUBTRACT_SYMBOL = "−";
-    public const string MULTIPLY_SYMBOL = "×";
-    public const string DIVIDE_SYMBOL = "÷";
-
     [SerializeField]
     private UnityEngine.UI.Text Text0 = null;
 
@@ -18,32 +13,35 @@ public class CardController : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Text Text2 = null;
 
-    // Update is called once per frame
-    void Update()
+    private MainController _MainController = null;
+
+    void Start()
     {
+        GameObject controllers = GameObject.Find("Controllers");
+        _MainController = controllers.GetComponent<MainController>();
     }
 
     public void ShowAdd()
     {
-        ShowCategory(ADD_SYMBOL);
+        ShowCategory(MainController.ADD_SYMBOL);
     }
 
     public void ShowSubtract()
     {
-        ShowCategory(SUBTRACT_SYMBOL);
+        ShowCategory(MainController.SUBTRACT_SYMBOL);
     }
 
     public void ShowMultiply()
     {
-        ShowCategory(MULTIPLY_SYMBOL);
+        ShowCategory(MainController.MULTIPLY_SYMBOL);
     }
     
     public void ShowDivide()
     {
-        ShowCategory(DIVIDE_SYMBOL);
+        ShowCategory(MainController.DIVIDE_SYMBOL);
     }
 
-    public void ShowProblem(int? n1, int? n2, string op)
+    public void ShowProblem(int? n1, int? n2, char op)
     {
         string line1 = n1.HasValue ? n1.ToString() : "?";
         string line2 = n2.HasValue ? n2.ToString() : "?";
@@ -55,10 +53,10 @@ public class CardController : MonoBehaviour
         Text2.text = line2;
     }
 
-    private void ShowCategory(string c)
+    private void ShowCategory(char c)
     {
         Text1.text = "";
         Text2.text = "";
-        Text0.text = c;
+        Text0.text = c.ToString();
     }
 }

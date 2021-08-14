@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int? SelectedNumber { get; set; }
+    public char SelectedOperation { get; set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public const char ADD_SYMBOL = '+';
+    public const char SUBTRACT_SYMBOL = '−';
+    public const char MULTIPLY_SYMBOL = '×';
+    public const char DIVIDE_SYMBOL = '÷';
 }
