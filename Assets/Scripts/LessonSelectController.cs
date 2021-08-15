@@ -17,9 +17,6 @@ public class LessonSelectController : MonoBehaviour
     private Animator CanvasAnimator = null;
 
     [SerializeField]
-    private GameObject Card1 = null;
-
-    [SerializeField]
     private CardController Card1Controller = null;
 
     [SerializeField]

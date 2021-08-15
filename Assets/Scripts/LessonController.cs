@@ -12,12 +12,20 @@ public class LessonController : MonoBehaviour
     [SerializeField]
     private CardController _CardController;
 
+    private List<QuestionAnswer> _QuestionAnswers;
+
     void Start()
     {
         GameObject controllers = GameObject.Find("Controllers");
         _MainController = controllers.GetComponent<MainController>();
 
-        var qa = new QuestionAnswer(9, 8, MainController.ADD_SYMBOL, 17);
+        int num = _MainController.SelectedNumber ?? 5;
+        char op = _MainController.SelectedOperation;
+
+        _QuestionAnswers = QuestionAnswer.GenerateQuestionAnswers(num, op);
+
+        var qa = _QuestionAnswers[0];
+        _QuestionAnswers.RemoveAt(0);
         _CardController.ShowProblem(qa);
     }
 
