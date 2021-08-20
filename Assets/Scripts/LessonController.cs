@@ -27,9 +27,7 @@ public class LessonController : MonoBehaviour
 
         _QuestionAnswers = QuestionAnswer.GenerateQuestionAnswers(num, op);
 
-        var qa = _QuestionAnswers[0];
-        _QuestionAnswers.RemoveAt(0);
-        _CardController.ShowProblem(qa);
+        AskNextQuestion();
     }
 
     private bool AskNextQuestion()
@@ -40,10 +38,35 @@ public class LessonController : MonoBehaviour
         _QuestionAnswers.RemoveAt(0);
         _CardController.ShowProblem(qa);
 
+        // compute the answers
+        List<int> answers = new List<int>();
+
+        int rightanswer = qa.Answer.Value;
+        // first, the right answer
+        answers.Add(rightanswer);
+
+        // then compute n-1 wrong answers
+        for (int i = 1; i < _AnswerButtonControllers.Count; i++)
+        {
+            int wronganswer = 0;
+            // Allow up to 100 tries to pick a random number
+            // that isn't the right answer and doesn't duplicate
+            // an already added wrong answer.
+            // It should never take 100, but just in case we don't
+            // want to keep trying.  Better to just display a duplicate
+            for (int trynum = 0; trynum < 100; trynum++)
+            {
+                wronganswer = qa.RandomAnswer();
+                if (!answers.Contains(wronganswer)) break;
+            }
+            answers.Add(wronganswer);
+        }
+
         for (int i = 0; i < _AnswerButtonControllers.Count; i++)
         {
-            _AnswerButtonControllers[i].SetAnswer(i);
+            _AnswerButtonControllers[i].SetAnswer(answers[i]);
         }
+
 
         return true;
     }

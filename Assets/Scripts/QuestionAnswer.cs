@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class QuestionAnswer
 {
@@ -16,6 +17,36 @@ public class QuestionAnswer
         Operation = op;
     }
 
+    public int RandomAnswer()
+    {
+        int min = 0;
+        int max = 0;
+        int ans = 0;
+
+        switch(Operation)
+        {
+            case MainController.ADD_SYMBOL:
+                min = 2 + 2;
+                max = 9 + 9 + 5;
+                break;
+            case MainController.SUBTRACT_SYMBOL:
+                min = 2;
+                max = 7;
+                break;
+            case MainController.MULTIPLY_SYMBOL:
+                min = 2 * 2;
+                max = (9 * 9) + 5;
+                break;
+            case MainController.DIVIDE_SYMBOL:
+                min = 2;
+                max = 9;
+                break;
+        }
+
+        ans = UnityEngine.Random.Range(min, max+1);
+
+        return ans;
+    }
 
     public static List<QuestionAnswer> GenerateQuestionAnswers(int n, char op)
     {
