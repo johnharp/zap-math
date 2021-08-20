@@ -14,4 +14,9 @@ public class AnswerButtonController : MonoBehaviour
         Answer = answer;
         Text.text = answer.ToString();
     }
+
+    public int GetAnswer()
+    {
+        return Answer;
+    }
 }

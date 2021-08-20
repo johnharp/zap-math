@@ -7,6 +7,9 @@ public class LessonController : MonoBehaviour
 {
     private MainController _MainController = null;
 
+    [SerializeField]
+    private Animator CanvasAnimator = null;
+
     private bool LessonComplete = false;
 
     [SerializeField]
@@ -16,6 +19,8 @@ public class LessonController : MonoBehaviour
     private List<AnswerButtonController> _AnswerButtonControllers;
 
     private List<QuestionAnswer> _QuestionAnswers;
+
+    private int CurrentRightAnswer = 0;
 
     void Start()
     {
@@ -35,14 +40,17 @@ public class LessonController : MonoBehaviour
         if (_QuestionAnswers.Count == 0) return false;
 
         var qa = _QuestionAnswers[0];
+        if (qa.Num1 == null || qa.Num2 == null || qa.Answer == null) return false;
+
         _QuestionAnswers.RemoveAt(0);
         _CardController.ShowProblem(qa);
+        CurrentRightAnswer = qa.Answer.Value;
 
-        // compute the answers
+        // choose the answers
         List<int> answers = new List<int>();
 
-        int rightanswer = qa.Answer.Value;
         // first, the right answer
+        int rightanswer = qa.Answer.Value;
         answers.Add(rightanswer);
 
         // then compute n-1 wrong answers
@@ -71,6 +79,7 @@ public class LessonController : MonoBehaviour
             answers[r] = tmp;
         }
 
+        // And assign the random answers to each button
         for (int i = 0; i < _AnswerButtonControllers.Count; i++)
         {
             _AnswerButtonControllers[i].SetAnswer(answers[i]);
@@ -83,5 +92,23 @@ public class LessonController : MonoBehaviour
     public void HandleBackButton()
     {
         SceneManager.LoadScene("LessonSelectScene");
+    }
+
+    public void HandleAnswerButton(int buttonNumber)
+    {
+        AnswerButtonController pressedButtonController =
+            _AnswerButtonControllers[buttonNumber];
+
+        int chosenAnswer = pressedButtonController.GetAnswer();
+        if (CurrentRightAnswer == chosenAnswer)
+        {
+            Debug.Log("Right!");
+            CanvasAnimator.Play("RightAnswerAnimation");
+            AskNextQuestion();
+        }
+        else
+        {
+            Debug.Log("Wrong!");
+        }
     }
 }
