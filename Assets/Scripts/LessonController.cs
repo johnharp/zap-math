@@ -30,12 +30,22 @@ public class LessonController : MonoBehaviour
         var qa = _QuestionAnswers[0];
         _QuestionAnswers.RemoveAt(0);
         _CardController.ShowProblem(qa);
+    }
+
+    private bool AskNextQuestion()
+    {
+        if (_QuestionAnswers.Count == 0) return false;
+
+        var qa = _QuestionAnswers[0];
+        _QuestionAnswers.RemoveAt(0);
+        _CardController.ShowProblem(qa);
 
         for (int i = 0; i < _AnswerButtonControllers.Count; i++)
         {
-            _AnswerButtonControllers[i].ShowAnswer(i);
+            _AnswerButtonControllers[i].SetAnswer(i);
         }
 
+        return true;
     }
 
     public void HandleBackButton()

@@ -11,9 +11,6 @@ public class LessonSelectController : MonoBehaviour
     private UnityEngine.UI.Button PlayButton = null;
 
     [SerializeField]
-    private GameObject CardPrefab = null;
-
-    [SerializeField]
     private Animator CanvasAnimator = null;
 
     [SerializeField]

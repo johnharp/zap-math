@@ -7,8 +7,11 @@ public class AnswerButtonController : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Text Text = null;
 
-    public void ShowAnswer(int answer)
+    private int Answer;
+
+    public void SetAnswer(int answer)
     {
+        Answer = answer;
         Text.text = answer.ToString();
     }
 }
