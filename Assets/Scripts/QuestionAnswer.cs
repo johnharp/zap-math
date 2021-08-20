@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestionAnswer
@@ -72,7 +73,14 @@ public class QuestionAnswer
             }
         }
 
-        // randomize here
+        // randomize the questions
+        for (int i = 0; i < qas.Count-1; i++)
+        {
+            int r = UnityEngine.Random.Range(i, qas.Count);
+            QuestionAnswer tmp = qas[i];
+            qas[i] = qas[r];
+            qas[r] = tmp;
+        }
 
         return qas;
     }
