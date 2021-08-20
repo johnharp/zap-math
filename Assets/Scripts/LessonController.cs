@@ -62,6 +62,15 @@ public class LessonController : MonoBehaviour
             answers.Add(wronganswer);
         }
 
+        // Randomize the answer buttons
+        for (int i = 0; i < answers.Count; i++)
+        {
+            int r = Random.Range(i, answers.Count);
+            int tmp = answers[i];
+            answers[i] = answers[r];
+            answers[r] = tmp;
+        }
+
         for (int i = 0; i < _AnswerButtonControllers.Count; i++)
         {
             _AnswerButtonControllers[i].SetAnswer(answers[i]);
