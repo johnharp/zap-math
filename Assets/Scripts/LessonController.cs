@@ -10,6 +10,9 @@ public class LessonController : MonoBehaviour
     [SerializeField]
     private Animator CanvasAnimator = null;
 
+    [SerializeField]
+    private Animator GradeAnimator = null;
+
     private bool LessonComplete = false;
 
     [SerializeField]
@@ -103,7 +106,7 @@ public class LessonController : MonoBehaviour
         if (CurrentRightAnswer == chosenAnswer)
         {
             Debug.Log("Right!");
-            CanvasAnimator.Play("RightAnswerAnimation");
+            GradeAnimator.Play("Check");
             AskNextQuestion();
         }
         else
