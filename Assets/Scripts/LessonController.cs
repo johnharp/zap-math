@@ -38,9 +38,14 @@ public class LessonController : MonoBehaviour
         AskNextQuestion();
     }
 
+    private bool QuestionsRemain()
+    {
+        return _QuestionAnswers.Count > 0;
+    }
+
     private bool AskNextQuestion()
     {
-        if (_QuestionAnswers.Count == 0) return false;
+        if (!QuestionsRemain()) return false;
 
         var qa = _QuestionAnswers[0];
         if (qa.Num1 == null || qa.Num2 == null || qa.Answer == null) return false;
@@ -105,13 +110,22 @@ public class LessonController : MonoBehaviour
         int chosenAnswer = pressedButtonController.GetAnswer();
         if (CurrentRightAnswer == chosenAnswer)
         {
-            Debug.Log("Right!");
             GradeAnimator.Play("Check");
-            AskNextQuestion();
+            if (!AskNextQuestion())
+            {
+                StartCoroutine(EndLessonAfterSeconds(1));
+            }
         }
         else
         {
-            Debug.Log("Wrong!");
+            GradeAnimator.Play("X");
         }
     }
+
+    IEnumerator EndLessonAfterSeconds(int sec)
+    {
+        yield return new WaitForSeconds(sec);
+
+        SceneManager.LoadScene("LessonEndScene");
+    } 
 }
