@@ -21,6 +21,15 @@ public class LessonController : MonoBehaviour
     [SerializeField]
     private List<AnswerButtonController> _AnswerButtonControllers;
 
+    [SerializeField]
+    private AudioClip SoundCorrect;
+
+    [SerializeField]
+    private AudioClip SoundWrong;
+
+    [SerializeField]
+    private AudioSource LessonAudioSource;
+
     private List<QuestionAnswer> _QuestionAnswers;
 
     private int CurrentRightAnswer = 0;
@@ -111,6 +120,7 @@ public class LessonController : MonoBehaviour
         if (CurrentRightAnswer == chosenAnswer)
         {
             GradeAnimator.Play("Check");
+            LessonAudioSource.PlayOneShot(SoundCorrect);
             if (!AskNextQuestion())
             {
                 StartCoroutine(EndLessonAfterSeconds(1));
@@ -119,6 +129,7 @@ public class LessonController : MonoBehaviour
         else
         {
             GradeAnimator.Play("X");
+            LessonAudioSource.PlayOneShot(SoundWrong);
         }
     }
 
