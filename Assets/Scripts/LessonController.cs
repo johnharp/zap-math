@@ -28,6 +28,9 @@ public class LessonController : MonoBehaviour
     private AudioClip SoundWrong;
 
     [SerializeField]
+    private AudioClip SoundClick;
+
+    [SerializeField]
     private AudioSource LessonAudioSource;
 
     private List<QuestionAnswer> _QuestionAnswers;
@@ -108,11 +111,13 @@ public class LessonController : MonoBehaviour
 
     public void HandleBackButton()
     {
+        LessonAudioSource.PlayOneShot(SoundClick);
         SceneManager.LoadScene("LessonSelectScene");
     }
 
     public void HandleAnswerButton(int buttonNumber)
     {
+        LessonAudioSource.PlayOneShot(SoundClick);
         AnswerButtonController pressedButtonController =
             _AnswerButtonControllers[buttonNumber];
 

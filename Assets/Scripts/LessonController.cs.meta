@@ -3,7 +3,14 @@ guid: 995572483445b481eb94921c23f3e912
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CanvasAnimator: {instanceID: 0}
+  - GradeAnimator: {instanceID: 0}
+  - _CardController: {instanceID: 0}
+  - SoundCorrect: {fileID: 8300000, guid: 83ca0e73c0c2b4ff38cad92322440910, type: 3}
+  - SoundWrong: {fileID: 8300000, guid: f3525e7e698c84cf0b959cecf100144d, type: 3}
+  - SoundClick: {fileID: 8300000, guid: a7090ca8a82384f57ad8b6a4bdab1eca, type: 3}
+  - LessonAudioSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
