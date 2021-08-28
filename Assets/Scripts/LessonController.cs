@@ -33,6 +33,9 @@ public class LessonController : MonoBehaviour
     [SerializeField]
     private AudioSource LessonAudioSource;
 
+    [SerializeField]
+    private Canvas LessonSceneCanvas;
+
     private List<QuestionAnswer> _QuestionAnswers;
 
     private int CurrentRightAnswer = 0;
@@ -105,7 +108,7 @@ public class LessonController : MonoBehaviour
             _AnswerButtonControllers[i].SetAnswer(answers[i]);
         }
 
-
+        LessonSceneCanvas.gameObject.SetActive(true);
         return true;
     }
 
@@ -117,6 +120,8 @@ public class LessonController : MonoBehaviour
 
     public void HandleAnswerButton(int buttonNumber)
     {
+        LessonSceneCanvas.gameObject.SetActive(false);
+
         LessonAudioSource.PlayOneShot(SoundClick);
         AnswerButtonController pressedButtonController =
             _AnswerButtonControllers[buttonNumber];
@@ -126,7 +131,11 @@ public class LessonController : MonoBehaviour
         {
             GradeAnimator.Play("Check");
             LessonAudioSource.PlayOneShot(SoundCorrect);
-            if (!AskNextQuestion())
+            if (QuestionsRemain())
+            {
+                StartCoroutine(AskNextQuestionAfterSeconds(1));
+            }
+            else
             {
                 StartCoroutine(EndLessonAfterSeconds(1));
             }
@@ -135,7 +144,22 @@ public class LessonController : MonoBehaviour
         {
             GradeAnimator.Play("X");
             LessonAudioSource.PlayOneShot(SoundWrong);
+            StartCoroutine(ShowCanvasAfterSeconds(1));
         }
+    }
+
+    IEnumerator AskNextQuestionAfterSeconds(int sec)
+    {
+        yield return new WaitForSeconds(sec);
+
+        LessonSceneCanvas.gameObject.SetActive(true);
+        AskNextQuestion();
+    }
+
+    IEnumerator ShowCanvasAfterSeconds(int sec)
+    {
+        yield return new WaitForSeconds(sec);
+        LessonSceneCanvas.gameObject.SetActive(true);
     }
 
     IEnumerator EndLessonAfterSeconds(int sec)
