@@ -44,6 +44,7 @@ public class LessonController : MonoBehaviour
     {
         GameObject controllers = GameObject.Find("Controllers");
         _MainController = controllers.GetComponent<MainController>();
+        _MainController.StartNewLesson();
 
         int num = _MainController.SelectedNumber ?? 5;
         char op = _MainController.SelectedOperation;
@@ -129,6 +130,7 @@ public class LessonController : MonoBehaviour
         int chosenAnswer = pressedButtonController.GetAnswer();
         if (CurrentRightAnswer == chosenAnswer)
         {
+            _MainController.IncNumCorrectAnswers();
             GradeAnimator.Play("Check");
             LessonAudioSource.PlayOneShot(SoundCorrect);
             if (QuestionsRemain())
@@ -142,6 +144,7 @@ public class LessonController : MonoBehaviour
         }
         else
         {
+            _MainController.IncNumWrongAnswers();
             GradeAnimator.Play("X");
             LessonAudioSource.PlayOneShot(SoundWrong);
             StartCoroutine(ShowCanvasAfterSeconds(1));
