@@ -14,18 +14,12 @@ public class LessonEndController : MonoBehaviour
     private AudioSource LessonAudioSource;
 
     [SerializeField]
-    private UnityEngine.UI.Text NumRightText = null;
-
-    [SerializeField]
     private UnityEngine.UI.Text NumWrongText = null;
 
     public void Start()
     {
         GameObject controllers = GameObject.Find("Controllers");
         _MainController = controllers.GetComponent<MainController>();
-
-        NumRightText.text =
-            _MainController.GetNumCorrectAnswersStr();
 
         NumWrongText.text =
             _MainController.GetNumWrongAnswersStr();
