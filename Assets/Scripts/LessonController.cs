@@ -8,6 +8,12 @@ public class LessonController : MonoBehaviour
     private MainController _MainController = null;
 
     [SerializeField]
+    private Sprite CheckImage = null;
+
+    [SerializeField]
+    private Sprite xImage = null;
+
+    [SerializeField]
     private Animator CanvasAnimator = null;
 
     [SerializeField]
@@ -36,6 +42,12 @@ public class LessonController : MonoBehaviour
     [SerializeField]
     private Canvas LessonSceneCanvas;
 
+    [SerializeField]
+    private GameObject AnswerButtonsContainer;
+
+    [SerializeField]
+    private UnityEngine.UI.Image[] GradeImages;
+
     private List<QuestionAnswer> _QuestionAnswers;
 
     private int CurrentRightAnswer = 0;
@@ -62,6 +74,7 @@ public class LessonController : MonoBehaviour
     private bool AskNextQuestion()
     {
         if (!QuestionsRemain()) return false;
+        _MainController.IncCurrentQuestionNumber();
 
         var qa = _QuestionAnswers[0];
         if (qa.Num1 == null || qa.Num2 == null || qa.Answer == null) return false;
@@ -109,7 +122,7 @@ public class LessonController : MonoBehaviour
             _AnswerButtonControllers[i].SetAnswer(answers[i]);
         }
 
-        LessonSceneCanvas.gameObject.SetActive(true);
+        ShowAnswerButtons();
         return true;
     }
 
@@ -119,9 +132,19 @@ public class LessonController : MonoBehaviour
         SceneManager.LoadScene("LessonSelectScene");
     }
 
+    private void HideAnswerButtons()
+    {
+        AnswerButtonsContainer.SetActive(false);
+    }
+
+    private void ShowAnswerButtons()
+    {
+        AnswerButtonsContainer.SetActive(true);
+    }
+
     public void HandleAnswerButton(int buttonNumber)
     {
-        LessonSceneCanvas.gameObject.SetActive(false);
+        HideAnswerButtons();
 
         LessonAudioSource.PlayOneShot(SoundClick);
         AnswerButtonController pressedButtonController =
@@ -130,6 +153,7 @@ public class LessonController : MonoBehaviour
         int chosenAnswer = pressedButtonController.GetAnswer();
         if (CurrentRightAnswer == chosenAnswer)
         {
+            GradeImages[_MainController.CurrentQuestionNumber-1].sprite = CheckImage;
             _MainController.IncNumCorrectAnswers();
             GradeAnimator.Play("Check");
             LessonAudioSource.PlayOneShot(SoundCorrect);
@@ -144,6 +168,7 @@ public class LessonController : MonoBehaviour
         }
         else
         {
+            GradeImages[_MainController.CurrentQuestionNumber-1].sprite = xImage;
             _MainController.IncNumWrongAnswers();
             GradeAnimator.Play("X");
             LessonAudioSource.PlayOneShot(SoundWrong);
@@ -155,14 +180,15 @@ public class LessonController : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);
 
-        LessonSceneCanvas.gameObject.SetActive(true);
+        ShowAnswerButtons();
         AskNextQuestion();
     }
 
     IEnumerator ShowCanvasAfterSeconds(int sec)
     {
         yield return new WaitForSeconds(sec);
-        LessonSceneCanvas.gameObject.SetActive(true);
+
+        ShowAnswerButtons();
     }
 
     IEnumerator EndLessonAfterSeconds(int sec)

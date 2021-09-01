@@ -16,10 +16,18 @@ public class MainController : MonoBehaviour
     private int NumCorrectAnswers = 0;
     private int NumWrongAnswers = 0;
 
+    public int CurrentQuestionNumber { get; set; }
+
     public void StartNewLesson()
     {
         NumCorrectAnswers = 0;
         NumWrongAnswers = 0;
+        CurrentQuestionNumber = 0;
+    }
+
+    public void IncCurrentQuestionNumber()
+    {
+        CurrentQuestionNumber++;
     }
 
     public void IncNumCorrectAnswers()
