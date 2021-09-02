@@ -23,6 +23,8 @@ public class LessonEndController : MonoBehaviour
 
         NumWrongText.text =
             _MainController.GetNumWrongAnswersStr();
+
+        Debug.Log(_MainController.GetPercentGrade());
     }
     public void HandleBackButton()
     {

@@ -157,10 +157,10 @@ public class LessonController : MonoBehaviour
         {
             if (!CurrentQuestionWasAnswered)
             {
+                CurrentQuestionWasAnswered = true;
                 GradeImages[_MainController.CurrentQuestionNumber - 1].sprite = CheckImage;
                 _MainController.IncNumCorrectAnswers();
             }
-            CurrentQuestionWasAnswered = true;
 
             GradeAnimator.Play("Check");
             LessonAudioSource.PlayOneShot(SoundCorrect);
@@ -175,10 +175,13 @@ public class LessonController : MonoBehaviour
         }
         else
         {
-            CurrentQuestionWasAnswered = true;
+            if (!CurrentQuestionWasAnswered)
+            {
+                CurrentQuestionWasAnswered = true;
+                GradeImages[_MainController.CurrentQuestionNumber-1].sprite = xImage;
+                _MainController.IncNumWrongAnswers();
+            }
 
-            GradeImages[_MainController.CurrentQuestionNumber-1].sprite = xImage;
-            _MainController.IncNumWrongAnswers();
             GradeAnimator.Play("X");
             LessonAudioSource.PlayOneShot(SoundWrong);
             StartCoroutine(ShowCanvasAfterSeconds(1));

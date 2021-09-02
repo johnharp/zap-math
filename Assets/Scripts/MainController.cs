@@ -23,6 +23,23 @@ public class MainController : MonoBehaviour
     public int CurrentQuestionNumber { get; set; }
 
 
+    public string GetPercentGrade()
+    {
+        string s = "";
+
+        int numerator = NumCorrectAnswers;
+        int denominator = NumCorrectAnswers + NumWrongAnswers;
+
+        if (denominator != 0)
+        {
+            int percent = (NumCorrectAnswers * 100) /
+                (NumCorrectAnswers + NumWrongAnswers);
+            s = string.Format("{0:N0} %", percent);
+        }
+
+        return s;
+    }
+
     public void StartNewLesson()
     {
         NumCorrectAnswers = 0;
