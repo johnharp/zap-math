@@ -14,17 +14,15 @@ public class LessonEndController : MonoBehaviour
     private AudioSource LessonAudioSource;
 
     [SerializeField]
-    private UnityEngine.UI.Text NumWrongText = null;
+    private UnityEngine.UI.Text PercentRightText = null;
 
     public void Start()
     {
         GameObject controllers = GameObject.Find("Controllers");
         _MainController = controllers.GetComponent<MainController>();
 
-        NumWrongText.text =
-            _MainController.GetNumWrongAnswersStr();
-
-        Debug.Log(_MainController.GetPercentGrade());
+        PercentRightText.text =
+            _MainController.GetPercentGrade();
     }
     public void HandleBackButton()
     {
