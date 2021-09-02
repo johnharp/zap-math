@@ -17,6 +17,9 @@ public class LessonController : MonoBehaviour
     private Animator CanvasAnimator = null;
 
     [SerializeField]
+    private UnityEngine.UI.Text ShowRightAnswerText = null;
+
+    [SerializeField]
     private Animator GradeAnimator = null;
 
     private bool LessonComplete = false;
@@ -182,9 +185,13 @@ public class LessonController : MonoBehaviour
                 _MainController.IncNumWrongAnswers();
             }
 
-            GradeAnimator.Play("X");
+            //GradeAnimator.Play("X");
+            ShowRightAnswerText.text = CurrentRightAnswer.ToString();
+            CanvasAnimator.Play("ShowRightAnswer");
             LessonAudioSource.PlayOneShot(SoundWrong);
-            StartCoroutine(ShowCanvasAfterSeconds(1));
+            StartCoroutine(AskNextQuestionAfterSeconds(1));
+
+            //StartCoroutine(ShowCanvasAfterSeconds(1));
         }
     }
 
