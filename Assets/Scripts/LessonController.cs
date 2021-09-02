@@ -51,6 +51,7 @@ public class LessonController : MonoBehaviour
     private List<QuestionAnswer> _QuestionAnswers;
 
     private int CurrentRightAnswer = 0;
+    private bool CurrentQuestionWasAnswered = false;
 
     void Start()
     {
@@ -73,6 +74,7 @@ public class LessonController : MonoBehaviour
 
     private bool AskNextQuestion()
     {
+        CurrentQuestionWasAnswered = false;
         if (!QuestionsRemain()) return false;
         _MainController.IncCurrentQuestionNumber();
 
@@ -153,8 +155,13 @@ public class LessonController : MonoBehaviour
         int chosenAnswer = pressedButtonController.GetAnswer();
         if (CurrentRightAnswer == chosenAnswer)
         {
-            GradeImages[_MainController.CurrentQuestionNumber-1].sprite = CheckImage;
-            _MainController.IncNumCorrectAnswers();
+            if (!CurrentQuestionWasAnswered)
+            {
+                GradeImages[_MainController.CurrentQuestionNumber - 1].sprite = CheckImage;
+                _MainController.IncNumCorrectAnswers();
+            }
+            CurrentQuestionWasAnswered = true;
+
             GradeAnimator.Play("Check");
             LessonAudioSource.PlayOneShot(SoundCorrect);
             if (QuestionsRemain())
@@ -168,6 +175,8 @@ public class LessonController : MonoBehaviour
         }
         else
         {
+            CurrentQuestionWasAnswered = true;
+
             GradeImages[_MainController.CurrentQuestionNumber-1].sprite = xImage;
             _MainController.IncNumWrongAnswers();
             GradeAnimator.Play("X");

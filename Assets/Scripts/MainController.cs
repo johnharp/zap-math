@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
+    public const int QUESTIONS_PER_LESSON = 8;
+
     public int? SelectedNumber { get; set; }
     public char SelectedOperation { get; set; }
 
@@ -16,7 +18,10 @@ public class MainController : MonoBehaviour
     private int NumCorrectAnswers = 0;
     private int NumWrongAnswers = 0;
 
+    // Current Question Number ranges from
+    // [0 - QUESTIONS_PER_LESSON]
     public int CurrentQuestionNumber { get; set; }
+
 
     public void StartNewLesson()
     {
