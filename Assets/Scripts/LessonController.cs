@@ -189,7 +189,14 @@ public class LessonController : MonoBehaviour
             ShowRightAnswerText.text = CurrentRightAnswer.ToString();
             CanvasAnimator.Play("ShowRightAnswer");
             LessonAudioSource.PlayOneShot(SoundWrong);
-            StartCoroutine(AskNextQuestionAfterSeconds(1));
+            if (QuestionsRemain())
+            {
+                StartCoroutine(AskNextQuestionAfterSeconds(1));
+            }
+            else
+            {
+                StartCoroutine(EndLessonAfterSeconds(1));
+            }
 
             //StartCoroutine(ShowCanvasAfterSeconds(1));
         }
