@@ -45,7 +45,8 @@ public class CardController : MonoBehaviour
     {
         string line1 = n1.HasValue ? n1.ToString() : "?";
         string line2 = n2.HasValue ? n2.ToString() : "?";
-        if (line2.Length == 1) line2 = " " + line2;
+        if (line2.Length == 1) line2 = "  " + line2;
+        else if (line2.Length == 2) line2 = " " + line2;
         line2 = op + line2;
 
         Text0.text = "";
