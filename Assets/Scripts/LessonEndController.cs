@@ -19,6 +19,16 @@ public class LessonEndController : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Text PercentRightText = null;
 
+    [SerializeField]
+    private Animator Star1Animator = null;
+
+    [SerializeField]
+    private Animator Star2Animator = null;
+
+    [SerializeField]
+    private Animator Star3Animator = null;
+
+
     private float firstThirdSeconds = 0.1f;
     private float secondThirdSeconds = 0.5f;
     private float thirdThirdSeconds = 3.0f;
@@ -53,11 +63,25 @@ public class LessonEndController : MonoBehaviour
             if (targetGrade - grade <= 5) waitTime = 0.4f;
             else if (targetGrade - grade <= 10) waitTime = 0.1f;
 
+            if (grade == 50)
+            {
+                Star2Animator.Play("Star2Animation");
+            }
+
+            if (grade == 75)
+            {
+                Star1Animator.Play("Star1Animation");
+            }
+
             PercentRightText.text = PercentGradeStr(grade);
             yield return new WaitForSeconds(waitTime);
         }
 
         PercentRightText.text = PercentGradeStr(targetGrade);
+        if (targetGrade == 100)
+        {
+            Star3Animator.Play("Star3Animation");
+        }
 
         LessonAudioSource.PlayOneShot(SoundEnd);
     }
