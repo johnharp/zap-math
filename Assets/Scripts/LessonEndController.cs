@@ -42,10 +42,18 @@ public class LessonEndController : MonoBehaviour
         PercentRightText.text = PercentGradeStr(0);
         StartCoroutine(CountUpToGrade());
     }
+
     public void HandleBackButton()
     {
         LessonAudioSource.PlayOneShot(SoundClick);
         SceneManager.LoadScene("LessonSelectScene");
+    }
+
+    public void HandleRetryButton()
+    {
+        LessonAudioSource.PlayOneShot(SoundClick);
+        _MainController.StartNewLesson();
+        SceneManager.LoadScene("LessonScene");
     }
 
     public void Update()
@@ -60,8 +68,8 @@ public class LessonEndController : MonoBehaviour
 
         for (int grade = 0; grade < targetGrade; grade++)
         {
-            if (targetGrade - grade <= 5) waitTime = 0.4f;
-            else if (targetGrade - grade <= 10) waitTime = 0.1f;
+            if (targetGrade - grade <= 5) waitTime = 0.3f;
+            else if (targetGrade - grade <= 10) waitTime = 0.2f;
 
             if (grade == 50)
             {
