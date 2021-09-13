@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundClick: {fileID: 8300000, guid: a7090ca8a82384f57ad8b6a4bdab1eca, type: 3}
-  SoundEnd: {fileID: 8300000, guid: 696f583a3af324d6dad02e7d6e61b9f9, type: 3}
+  SoundEnd: {fileID: 8300000, guid: 989f04c5110124eb4a3548db661e8f6c, type: 3}
   LessonAudioSource: {fileID: 397694578}
   PercentRightText: {fileID: 1788702478}
   Star1Animator: {fileID: 1289867499}

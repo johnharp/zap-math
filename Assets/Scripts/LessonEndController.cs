@@ -66,11 +66,13 @@ public class LessonEndController : MonoBehaviour
             if (grade == 50)
             {
                 Star2Animator.Play("Star2Animation");
+                LessonAudioSource.PlayOneShot(SoundEnd);
             }
 
             if (grade == 75)
             {
                 Star1Animator.Play("Star1Animation");
+                LessonAudioSource.PlayOneShot(SoundEnd);
             }
 
             PercentRightText.text = PercentGradeStr(grade);
@@ -81,9 +83,8 @@ public class LessonEndController : MonoBehaviour
         if (targetGrade == 100)
         {
             Star3Animator.Play("Star3Animation");
+            LessonAudioSource.PlayOneShot(SoundEnd);
         }
-
-        LessonAudioSource.PlayOneShot(SoundEnd);
     }
 
     private string PercentGradeStr(int g)
