@@ -53,7 +53,7 @@ public class QuestionAnswer
     {
         List<QuestionAnswer> qas = new List<QuestionAnswer>();
 
-        for (int i = 1; i <= 12; i++)
+        for (int i = 1; i <= 3; i++)
         {
             if (op == MainController.ADD_SYMBOL)
             {

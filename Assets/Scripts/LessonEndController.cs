@@ -11,10 +11,18 @@ public class LessonEndController : MonoBehaviour
     private AudioClip SoundClick;
 
     [SerializeField]
+    private AudioClip SoundEnd;
+
+    [SerializeField]
     private AudioSource LessonAudioSource;
 
     [SerializeField]
     private UnityEngine.UI.Text PercentRightText = null;
+
+    private float firstThirdSeconds = 0.1f;
+    private float secondThirdSeconds = 0.5f;
+    private float thirdThirdSeconds = 3.0f;
+
 
     public void Start()
     {
@@ -38,14 +46,20 @@ public class LessonEndController : MonoBehaviour
     IEnumerator CountUpToGrade()
     {
         int targetGrade = _MainController.GetPercentGrade();
-        int grade = 0;
+        float waitTime = 0.01f;
 
-        while (grade < targetGrade)
+        for (int grade = 0; grade < targetGrade; grade++)
         {
-            grade++;
+            if (targetGrade - grade <= 5) waitTime = 0.4f;
+            else if (targetGrade - grade <= 10) waitTime = 0.1f;
+
             PercentRightText.text = PercentGradeStr(grade);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(waitTime);
         }
+
+        PercentRightText.text = PercentGradeStr(targetGrade);
+
+        LessonAudioSource.PlayOneShot(SoundEnd);
     }
 
     private string PercentGradeStr(int g)
