@@ -1,3 +1,8 @@
+# Zap!Cards Math
+Practice your math facts (addition, substraction, multiplication, division) from 1 - 12 in this simple and fast app.
+After selecting which operation and which number to practice you'll be presented with 12 questions.
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/johnharp/zap-math/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
