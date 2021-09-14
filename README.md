@@ -32,4 +32,4 @@ After 12 cards your overall score will be displayed.  If you want to retry the s
 ### Support or Contact
 
 Having trouble with Zap!Cards Math?
-[Email](mailto:zap-math@harper.link) for any questions and we'll be happy to help.
+[Email](mailto:zap-math@harper.link) any questions and we'll be happy to help.
