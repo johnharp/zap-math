@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
-    //public const int QUESTIONS_PER_LESSON = 8;
-
     public int? SelectedNumber { get; set; }
     public char SelectedOperation { get; set; }
 

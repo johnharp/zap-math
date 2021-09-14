@@ -66,10 +66,12 @@ public class LessonEndController : MonoBehaviour
         int targetGrade = _MainController.GetPercentGrade();
         float waitTime = 0.01f;
 
-        for (int grade = 0; grade < targetGrade; grade++)
+        for (int grade = 0; grade <= targetGrade; grade++)
         {
-            if (targetGrade - grade <= 5) waitTime = 0.3f;
-            else if (targetGrade - grade <= 10) waitTime = 0.2f;
+            if (targetGrade - grade <= 5) waitTime = 0.1f;
+            else if (targetGrade - grade <= 25) waitTime = 0.07f;
+
+            PercentRightText.text = PercentGradeStr(grade);
 
             if (grade == 50)
             {
@@ -83,16 +85,16 @@ public class LessonEndController : MonoBehaviour
                 LessonAudioSource.PlayOneShot(SoundEnd);
             }
 
-            PercentRightText.text = PercentGradeStr(grade);
+            if (grade == 100)
+            {
+                Star3Animator.Play("Star3Animation");
+                LessonAudioSource.PlayOneShot(SoundEnd);
+            }
+
             yield return new WaitForSeconds(waitTime);
         }
 
-        PercentRightText.text = PercentGradeStr(targetGrade);
-        if (targetGrade == 100)
-        {
-            Star3Animator.Play("Star3Animation");
-            LessonAudioSource.PlayOneShot(SoundEnd);
-        }
+
     }
 
     private string PercentGradeStr(int g)

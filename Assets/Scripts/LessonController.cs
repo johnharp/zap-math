@@ -185,7 +185,6 @@ public class LessonController : MonoBehaviour
                 _MainController.IncNumWrongAnswers();
             }
 
-            //GradeAnimator.Play("X");
             ShowRightAnswerText.text = CurrentRightAnswer.ToString();
             CanvasAnimator.Play("ShowRightAnswer");
             LessonAudioSource.PlayOneShot(SoundWrong);
@@ -197,8 +196,6 @@ public class LessonController : MonoBehaviour
             {
                 StartCoroutine(EndLessonAfterSeconds(1));
             }
-
-            //StartCoroutine(ShowCanvasAfterSeconds(1));
         }
     }
 
