@@ -3,8 +3,8 @@ Practice your math facts (addition, substraction, multiplication, division) from
 After selecting which operation and which number to practice you'll be presented with 12 questions.
 
 
-### Select An Operation
-
+### Select an Operation
+![Select an Operation Screenshot](~/screenshot-select-op.png)
 
 ### Support or Contact
 
