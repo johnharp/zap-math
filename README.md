@@ -4,16 +4,23 @@ After selecting which operation and which number to practice you'll be presented
 
 
 ### Select an Operation
+Choose which operation you'd like to practice: +, -, ×, or ÷
+
 ![Select an Operation Screenshot](/screenshot-select-op.png)
 
-Choose which operation you'd like to practice by selecting from +, -, ×, or ÷
 
 ### Select a Number
+Choose which number to practice.  For addition and multiplication, this will be the first number on the card.  For example, selecting "+" and "5" means you'll be presented with cards asking 5+1, 5+2, 5+3, and so on.
+
+For subtraction and division, this will be the second number on the card.  For example, selecting "-" and "5" means you'll be presented with cards asking 6-5, 7-5, 8-5, and so on.
+
 ![Select a Number Screenshot](/screenshot-select-num.png)
 
-Choose which number to practice and select the green play button to start.
+
 
 ### Quiz
+As each quiz card is displayed, there will be a brief pause.  During this time try to bring to mind the answer to the question.  After this pause you'll be presented with 4 answers.  Choose the correct answer to earn a green check.  If you make a mistake, a red "X" will be tallied and the correct answer will be briefly displayed.
+
 ![Quiz Screenshot](/screenshot-quiz.png)
 
 Answer 12 questions.
