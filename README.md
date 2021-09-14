@@ -1,4 +1,3 @@
-# Zap!Cards Math
 ![Header Image](/github-repo-image.png)
 
 Practice your math facts (addition, substraction, multiplication, division) from 1 - 12 in this simple and fast app.
