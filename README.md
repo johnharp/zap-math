@@ -4,7 +4,7 @@ After selecting which operation and which number to practice you'll be presented
 
 
 ### Select an Operation
-![Select an Operation Screenshot](~/screenshot-select-op.png)
+![Select an Operation Screenshot](/screenshot-select-op.png)
 
 ### Support or Contact
 
