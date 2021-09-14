@@ -1,6 +1,5 @@
 # Zap!Cards Math
 Practice your math facts (addition, substraction, multiplication, division) from 1 - 12 in this simple and fast app.
-After selecting which operation and which number to practice you'll be presented with 12 questions.
 
 
 ### Select an Operation
@@ -19,11 +18,16 @@ For subtraction and division, this will be the second number on the card.  For e
 
 
 ### Quiz
-As each quiz card is displayed, there will be a brief pause.  During this time try to bring to mind the answer to the question.  After this pause you'll be presented with 4 answers.  Choose the correct answer to earn a green check.  If you make a mistake, a red "X" will be tallied and the correct answer will be briefly displayed.
+As each card is displayed, there will be a brief pause.  During this time try to bring to mind the answer to the question.  After this pause you'll be presented with 4 answers.  Choose the correct answer to earn a green check.  If you make a mistake, a red "X" will be tallied and the correct answer will be briefly displayed.
 
 ![Quiz Screenshot](/screenshot-quiz.png)
 
-Answer 12 questions.
+
+
+### Results
+After 12 cards your overall score will be displayed.  If you want to retry the same operation and number select the replay button.  Or, select the back arrow to chose another operation and number.
+
+![Results Screenshot](/screenshot-grade.png)
 
 ### Support or Contact
 
