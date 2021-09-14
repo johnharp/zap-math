@@ -5,7 +5,18 @@ After selecting which operation and which number to practice you'll be presented
 
 ### Select an Operation
 ![Select an Operation Screenshot](/screenshot-select-op.png)
+
 Choose which operation you'd like to practice by selecting from +, -, ×, or ÷
+
+### Select a Number
+![Select a Number Screenshot](/screenshot-select-num.png)
+
+Choose which number to practice and select the green play button to start.
+
+### Quiz
+![Quiz Screenshot](/screenshot-quiz.png)
+
+Answer 12 questions.
 
 ### Support or Contact
 
