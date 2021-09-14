@@ -77,6 +77,8 @@ public class LessonController : MonoBehaviour
 
     private bool AskNextQuestion()
     {
+        HideAnswerButtons();
+
         CurrentQuestionWasAnswered = false;
         if (!QuestionsRemain()) return false;
         _MainController.IncCurrentQuestionNumber();
@@ -127,7 +129,8 @@ public class LessonController : MonoBehaviour
             _AnswerButtonControllers[i].SetAnswer(answers[i]);
         }
 
-        ShowAnswerButtons();
+        StartCoroutine(ShowCanvasAfterSeconds(1.5f));
+
         return true;
     }
 
@@ -199,6 +202,7 @@ public class LessonController : MonoBehaviour
         }
     }
 
+
     IEnumerator AskNextQuestionAfterSeconds(int sec)
     {
         yield return new WaitForSeconds(sec);
@@ -207,7 +211,7 @@ public class LessonController : MonoBehaviour
         AskNextQuestion();
     }
 
-    IEnumerator ShowCanvasAfterSeconds(int sec)
+    IEnumerator ShowCanvasAfterSeconds(float sec)
     {
         yield return new WaitForSeconds(sec);
 
