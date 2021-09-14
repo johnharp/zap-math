@@ -10,4 +10,4 @@ Choose which operation you'd like to practice by selecting from +, -, ×, or ÷
 ### Support or Contact
 
 Having trouble with Zap!Cards Math?
-[Email](zap-math@harper.link) and we’ll help you sort it out.
+[Email](<zap-math@harper.link>) and we’ll help you sort it out.
