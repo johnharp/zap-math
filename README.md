@@ -5,6 +5,7 @@ After selecting which operation and which number to practice you'll be presented
 
 ### Select an Operation
 ![Select an Operation Screenshot](/screenshot-select-op.png)
+Choose which operation you'd like to practice by selecting from +, -, ×, or ÷
 
 ### Support or Contact
 
