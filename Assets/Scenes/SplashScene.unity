@@ -338,7 +338,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: cards
+  m_Text: Cards
 --- !u!222 &948483009
 CanvasRenderer:
   m_ObjectHideFlags: 0
