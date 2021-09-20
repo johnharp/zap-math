@@ -49,6 +49,9 @@ public class LessonController : MonoBehaviour
     private GameObject AnswerButtonsContainer;
 
     [SerializeField]
+    private GameObject Thinking;
+
+    [SerializeField]
     private UnityEngine.UI.Image[] GradeImages;
 
     private List<QuestionAnswer> _QuestionAnswers;
@@ -129,6 +132,7 @@ public class LessonController : MonoBehaviour
             _AnswerButtonControllers[i].SetAnswer(answers[i]);
         }
 
+        ShowThinking();
         StartCoroutine(ShowCanvasAfterSeconds(1.5f));
 
         return true;
@@ -148,6 +152,23 @@ public class LessonController : MonoBehaviour
     private void ShowAnswerButtons()
     {
         AnswerButtonsContainer.SetActive(true);
+    }
+
+    private void ShowThinking()
+    {
+        Thinking.SetActive(true);
+    }
+
+    private void HideThinking()
+    {
+        Thinking.SetActive(false);
+    }
+
+    IEnumerator HideThinkingAfterSeconds(int sec)
+    {
+        yield return new WaitForSeconds(sec);
+
+        HideThinking();
     }
 
     public void HandleAnswerButton(int buttonNumber)
@@ -207,7 +228,6 @@ public class LessonController : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);
 
-        ShowAnswerButtons();
         AskNextQuestion();
     }
 
@@ -215,6 +235,7 @@ public class LessonController : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);
 
+        HideThinking();
         ShowAnswerButtons();
     }
 
