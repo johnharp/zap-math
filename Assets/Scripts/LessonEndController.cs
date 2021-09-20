@@ -68,8 +68,8 @@ public class LessonEndController : MonoBehaviour
 
         for (int grade = 0; grade <= targetGrade; grade++)
         {
-            if (targetGrade - grade <= 5) waitTime = 0.1f;
-            else if (targetGrade - grade <= 25) waitTime = 0.07f;
+            if (targetGrade - grade <= 5) waitTime = 0.08f;
+            else if (targetGrade - grade <= 25) waitTime = 0.06f;
 
             PercentRightText.text = PercentGradeStr(grade);
 
