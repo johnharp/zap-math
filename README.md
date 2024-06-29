@@ -37,7 +37,7 @@ Having trouble with Zap!Cards Math?
 
 ## <a name="privacy"></a> Zap!Cards Math Privacy Policy
 
-Last updated [September 20, 2021]
+Last updated [June 29, 2024]
 
 #### Personal Data
 
